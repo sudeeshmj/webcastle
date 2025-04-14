@@ -51,4 +51,4 @@ A professional and modern web application built with Laravel to manage doctor sc
    php artisan serve
    ```
 
-Access the app at: http://localhost:8000
+
