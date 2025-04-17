@@ -35,10 +35,16 @@ class AppointmentService
     }
     public function getDoctorAvailableDays($doctorId)
     {
+        // return DoctorSchedule::where('doctor_id', $doctorId)
+        //     ->select('day')
+        //     ->distinct()
+        //     ->get();
+
         return DoctorSchedule::where('doctor_id', $doctorId)
             ->select('day')
             ->distinct()
-            ->get();
+            ->pluck('day')
+            ->toArray();
     }
 
     public function getAvailableSlots($request)

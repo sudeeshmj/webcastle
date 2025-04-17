@@ -71,7 +71,6 @@ $(document).ready(function () {
         loadSlotsForDate($(this));
     });
 
-    // Auto-select today's date and load its slots on page load
     let todayBtn = $(".date-btn").first();
     if (todayBtn.length) {
         loadSlotsForDate(todayBtn);

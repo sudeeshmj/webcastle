@@ -38,7 +38,7 @@
                 <div>
                     <h6 class="mb-2">Available Days:</h6>
                     @foreach ($doctorAvailableDays as $day)
-                        <span class="badge bg-light text-dark border me-1">{{ $day->day }}</span>
+                        <span class="badge bg-light text-dark border me-1">{{ $day }}</span>
                     @endforeach
                 </div>
             </div>
@@ -52,7 +52,14 @@
             <div class="card-body">
                 <div class="d-flex overflow-auto gap-2 flex-nowrap mb-3" id="date-buttons">
                     @for ($i = 0; $i < 30; $i++)
-                        @php $date = now()->addDays($i); @endphp
+                        @php
+                            $date = now()->addDays($i);
+                            $dayName = $date->format('l');
+                            if (!in_array($dayName, $doctorAvailableDays)) {
+                                continue;
+                            }
+
+                        @endphp
                         <button style="min-width: 100px;"
                             class="btn btn-sm btn-outline-primary date-btn px-3 py-2 text-center"
                             data-date="{{ $date->format('Y-m-d') }}">
